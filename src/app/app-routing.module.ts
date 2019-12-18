@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AppComponent } from './app.component';
 
-const routes: Routes = [];
+const appRoutes: Routes = [
+  { path: 'inicio', component: AppComponent,
+      children: [
+        {
+          path: '',
+          loadChildren: './modules/inicio.module#InicioModule'
+        }]
+  },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
