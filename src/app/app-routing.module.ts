@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-
 const appRoutes: Routes = [
-  { path: 'inicio', component: AppComponent,
-      children: [
-        {
-          path: '',
-          loadChildren: './modules/inicio.module#InicioModule'
-        }]
+  { 
+    path: 'inicio',
+    loadChildren: () => import('./modules/inicio//inicio.module').then(mod => mod.InicioModule)
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   
